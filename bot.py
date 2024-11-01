@@ -7,6 +7,7 @@ from sqlalchemy.orm import sessionmaker
 from models import triviaques, QuestionSession, Player_1, Player_2, GameSession
 import random, string
 from sqlalchemy.sql.expression import func
+from sqlalchemy.pool import NullPool
 
 load_dotenv()
 API_KEY = os.getenv("API_KEY")
@@ -19,14 +20,14 @@ bot = telebot.TeleBot(API_KEY)
 
 # Questions and Answers Database connection
 QUESTION_DATABASE_URL = QUES_DATABASE
-engine1 = create_engine(QUESTION_DATABASE_URL)
+engine1 = create_engine(QUESTION_DATABASE_URL, pool_size=5, pool_recycle=1800, pool_pre_ping=True)
 Session1 = sessionmaker(bind=engine1)
 ques_session = Session1()
 
 
 # Users, Game Session and Game Data Database connection
 GAME_DATABASE_URL = GAME_DATABASE
-engine2 = create_engine(GAME_DATABASE_URL)
+engine2 = create_engine(GAME_DATABASE_URL, pool_size=5, pool_recycle=1800, pool_pre_ping=True)
 Session2 = sessionmaker(bind=engine2)
 game_session = Session2()
 

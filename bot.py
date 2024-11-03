@@ -8,8 +8,16 @@ from models import triviaques, QuestionSession, Player_1, Player_2, GameSession
 import random, string
 from sqlalchemy.sql.expression import func
 from sqlalchemy.pool import NullPool
+from db_alive import start_game_keep_alive, start_ques_keep_alive
+
+
 
 load_dotenv()
+
+start_ques_keep_alive()
+start_game_keep_alive()
+
+
 API_KEY = os.getenv("API_KEY")
 QUES_DATABASE = os.getenv("QUES_DATABASE")
 GAME_DATABASE = os.getenv("GAME_DATABASE")

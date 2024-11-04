@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, Text, VARCHAR, ForeignKey
+from sqlalchemy import Column, Integer, Text, VARCHAR, ForeignKey, BigInteger
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 
@@ -21,7 +21,7 @@ class triviaques(Base):
 class QuestionSession(Base):
     __tablename__ = "Question_Session"
     id = Column(Integer, primary_key=True)
-    user_id = Column(Integer, unique=True, nullable=True)
+    user_id = Column(BigInteger, unique=True, nullable=True)
     question_id = Column(Integer, ForeignKey("QnA.id"))
     correct_answer = Column(Text, nullable=True)
 
@@ -33,7 +33,7 @@ class Player_1(Base):
     __tablename__ = "Player1"
     id = Column(Integer, primary_key=True)
     username = Column(VARCHAR, unique=False, nullable=True)
-    chat_id = Column(Integer, unique=True, nullable=True)
+    chat_id = Column(BigInteger, unique=True, nullable=True)
     points = Column(Integer, unique=False, nullable=True)
     session_id = Column(Text, unique=True, nullable=True)
 
@@ -43,7 +43,7 @@ class Player_2(Base):
     __tablename__ = "Player2"
     id = Column(Integer, primary_key=True)
     username = Column(VARCHAR, unique=False, nullable=True)
-    chat_id = Column(Integer, unique=True, nullable=True)
+    chat_id = Column(BigInteger, unique=True, nullable=True)
     points = Column(Integer, unique=False, nullable=True)
     session_id = Column(Text, unique=True, nullable=True)
 
@@ -54,7 +54,7 @@ class GameSession(Base):
     target_point = Column(Integer, nullable=True)
     current_player = Column(VARCHAR, nullable=True)
     game_id = Column(Text, ForeignKey("Player1.session_id"), unique=True, nullable=True)
-    player1_id = Column(Integer, nullable=True)
-    player2_id = Column(Integer, nullable=True)
+    player1_id = Column(BigInteger, nullable=True)
+    player2_id = Column(BigInteger, nullable=True)
 
     player1 = relationship("Player_1", back_populates="game_session")

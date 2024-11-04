@@ -250,7 +250,7 @@ def handle_answer(message):
     player_answer = message.text
     str_user_id = str(user_id)
 
-    if message.text == "reset":
+    if message.text == "/reset":
         reset(message)
         return
     elif message.text == "/help":

@@ -51,7 +51,7 @@ def start_game(message):
 
     player_keyboard.add(user1_button, user2_button)
 
-    bot.send_message(user_id, "\U0001f609<b>Welcome to the Genius Trivia Game</b>\n\n<b><u>GAME RULES</u></b>\n\u270d\ufe0fOnly 2 players can play at a time\n\u270d\ufe0fAvoid using 'a', 'the' and 'an' before answers. Answer questions directly and precisely\n\u270d\ufe0fAlways type an asnwer even if you don't know\n\u270d\ufe0fAvoid using symbols(@,-,&) or emojis. Type in full if applicable\n\u270d\ufe0fIf an answer requires a number, type it in words\n\u270d\ufe0fNo shorthand; type words and names in full\n\U0001f91eMay The Best Player Win\U0001f91e", parse_mode="HTML")
+    bot.send_message(user_id, "\U0001f609<b>Welcome to the Genius Trivia Game</b>\n\n<b><u>GAME RULES</u></b>\n\u270d\ufe0fOnly 2 players can play at a time\n\u270d\ufe0fAvoid using 'a', 'the' and 'an' before answers. Answer questions directly and precisely\n\u270d\ufe0fAlways type an answer even if you don't know\n\u270d\ufe0fAvoid using symbols(@,-,&) or emojis. Type in full if applicable\n\u270d\ufe0fIf an answer requires a number, type the number\n\u270d\ufe0fNo shorthand; type words and names in full\n\U0001f91eMay The Best Player Win\U0001f91e", parse_mode="HTML")
     bot.send_message(user_id, "Select if you are *User 1* or *User 2*", parse_mode="Markdown", reply_markup=player_keyboard)
 
 

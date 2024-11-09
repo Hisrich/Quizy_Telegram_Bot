@@ -231,8 +231,20 @@ def respond_target(message):
             set_target(message)
 
 
-def ask_question(user_id):
-    question = get_question(ques_session)
+def ask_question(user_id):   
+    question = get_question(ques_session)   
+    reference = ques_session.query(QuestionSession).filter_by(user_id=user_id, question_id=question.id).first()
+    count = ques_session.query(func.count(triviaques.id)).scalar()
+    count_ref = 0
+    while reference != None:
+        count_ref += 1
+        if count_ref >= count:
+            bot.send_message(user_id, "No questions available at the moment")
+            inquire_to_restart_game(user_id)
+        else:
+            question = get_question(ques_session)
+            reference = ques_session.query(QuestionSession).filter_by(user_id=user_id, question_id=question.id).first() 
+
     specific_question = question.questions
     specific_answer = question.answers
     specific_id = question.id

@@ -1,3 +1,6 @@
 quizyenv/
 .env
 update.txt
+questions.sql
+quizbot_db
+triviaquesbackup
